@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 
 class App extends Component {
   state = {
@@ -12,7 +13,15 @@ class App extends Component {
   }
 
   switchNameHandler = () => {
-    console.log('was clicked!!')
+    // console.log('was clicked!!')
+    // DON'T DO THIS: this.state.persons[0].name = 'Vieira';
+    this.setState({
+      persons: [
+        {name: 'Dan', age: 37},
+        {name: 'Amanda', age: 32},
+        {name: 'Valentina', age: 2}
+      ]
+    })
   }
 
   render() {
