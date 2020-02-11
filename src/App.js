@@ -23,6 +23,16 @@ class App extends Component {
     })
   }
 
+  nameChangeHandler = (event) => {
+    this.setState({
+      persons: [
+        {name: 'Danilo', age: 37},
+        {name: event.target.value, age: 32},
+        {name: 'Valentina', age: 1}
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,7 +51,8 @@ class App extends Component {
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age} 
           // An alternative way of passing a method receiveing a parameter
-          click={() => this.switchNameHandler('Dan!!')}>
+          click={() => this.switchNameHandler('Dan!!')}
+          change={this.nameChangeHandler}>
           My Robbies: handcrafting
         </Person>
         <Person 
