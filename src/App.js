@@ -53,18 +53,11 @@ class App extends Component {
       cursor: 'pointer'
     }
 
-    return (
-      <div className="App">
+    let persons = null;
 
-        <h1>This is a react app</h1>
-        <p>This is really working!</p>
-        <button style={styleButton}
-          // Most used way to pass a mathod receiving a parameter
-          onClick={this.togglePersonHandler}>
-          Toggle
-        </button> 
-        {this.state.showPersons ?
-          <div>
+    if(this.state.showPersons){
+      persons = (
+        <div>
           <Person 
             name={this.state.persons[0].name} 
             age={this.state.persons[0].age}/>
@@ -79,8 +72,21 @@ class App extends Component {
           <Person 
             name={this.state.persons[2].name} 
             age={this.state.persons[2].age}/>
-        </div> : null}
-               
+        </div>
+      )
+    }
+
+    return (
+      <div className="App">
+
+        <h1>This is a react app</h1>
+        <p>This is really working!</p>
+        <button style={styleButton}
+          // Most used way to pass a mathod receiving a parameter
+          onClick={this.togglePersonHandler}>
+          Toggle
+        </button>
+        {persons}
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null,  'This works now!!!'));
