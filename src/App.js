@@ -8,7 +8,9 @@ class App extends Component {
       {name: 'Danilo', age: 37},
       {name: 'Amanda', age: 32},
       {name: 'Valentina', age: 1}
-    ]
+    ],
+    otherState: 'some other state',
+    showPersons: false
   }
 
   switchNameHandler = (name) => {
@@ -33,32 +35,52 @@ class App extends Component {
     })
   }
 
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+    });
+
+  }
+
   render() {
+
+    const styleButton = {
+      'background-color': 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
 
         <h1>This is a react app</h1>
         <p>This is really working!</p>
-        <button 
+        <button style={styleButton}
           // Most used way to pass a mathod receiving a parameter
-          onClick={this.switchNameHandler.bind(this, 'Danilo!!')}>
-          Switch name
+          onClick={this.togglePersonHandler}>
+          Toggle
         </button> 
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}/>
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age} 
-          // An alternative way of passing a method receiveing a parameter
-          click={() => this.switchNameHandler('Dan!!')}
-          change={this.nameChangeHandler}>
-          My Robbies: handcrafting
-        </Person>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age}/>
-        
+        {this.state.showPersons ?
+          <div>
+          <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age}/>
+          <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age} 
+            // An alternative way of passing a method receiveing a parameter
+            click={() => this.switchNameHandler('Dan!!')}
+            change={this.nameChangeHandler}>
+            My Robbies: handcrafting
+          </Person>
+          <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age}/>
+        </div> : null}
+               
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null,  'This works now!!!'));
