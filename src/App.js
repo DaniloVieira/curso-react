@@ -4,7 +4,7 @@ import './App.css';
 import Person from './Person/Person';
 
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${props => props.sty ? 'red' : 'green'};
   color: white;
   font: inherit;
   border: 1px solid blue;
@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.sty ? 'salmon' : 'lightgreen'}; ;
     color: black;
   }
 `;
@@ -91,7 +91,6 @@ class App extends Component {
           })}
         </div>
       )
-
       // styleButton.backgroundColor = 'red';
       // styleButton[':hover'] = {
       //   backgroundColor: 'salmon',
@@ -113,6 +112,7 @@ class App extends Component {
           <h1>This is a react app</h1>
           <p className={classes.join(' ')}>This is really working!</p>
           <StyledButton 
+            sty={this.state.showPersons}
             // Most used way to pass a mathod receiving a parameter
             onClick={this.togglePersonHandler}>
             Toggle
