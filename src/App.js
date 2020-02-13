@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import './App.css';
 import Person from './Person/Person';
 
@@ -94,17 +94,18 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-
-        <h1>This is a react app</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button style={styleButton}
-          // Most used way to pass a mathod receiving a parameter
-          onClick={this.togglePersonHandler}>
-          Toggle
-        </button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>This is a react app</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button style={styleButton}
+            // Most used way to pass a mathod receiving a parameter
+            onClick={this.togglePersonHandler}>
+            Toggle
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null,  'This works now!!!'));
   }
