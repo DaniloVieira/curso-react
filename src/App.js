@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
+
 import './App.css';
 import Person from './Person/Person';
 
@@ -94,7 +94,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+      
         <div className="App">
           <h1>This is a react app</h1>
           <p className={classes.join(' ')}>This is really working!</p>
@@ -105,10 +105,10 @@ class App extends Component {
           </button>
           {persons}
         </div>
-      </StyleRoot>
+      
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null,  'This works now!!!'));
   }
 }
 
-export default Radium(App);
+export default App;
