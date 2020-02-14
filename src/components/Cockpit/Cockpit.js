@@ -16,6 +16,17 @@ const assignedClasses = (length) => {
 const btnClass = showPersons => showPersons ? classes.Red : '';  
 
 const cockpit = (props) => {    
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        // Http request...
+        setTimeout(() => {
+            alert('save data to cloud!!!');
+        }, 1000);
+
+    }, [props.persons]);
+    // this second paramter makes this useEffect execute only when persons changes
+    // when using an empty array "[]" it executes once before de compoent renders
+
     return (
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
