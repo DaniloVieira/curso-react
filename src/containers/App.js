@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import classes from './App.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 //import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
   nameChangeHandler = (event, id) => {
 
     const personIndex = this.state.persons.findIndex(p => {
-      return p.personId === id;
+      return p.id === id;
     })
     //const person = Object.assign({}, this.state.persons[personIndex])
     const person = {
