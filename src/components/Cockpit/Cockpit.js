@@ -18,7 +18,7 @@ const btnClass = showPersons => showPersons ? classes.Red : '';
 const cockpit = (props) => {    
     return (
         <div className={classes.Cockpit}>
-            <h1>This is a react app</h1>
+            <h1>{props.title}</h1>
             <p className={assignedClasses(props.persons.length)}>This is really working!</p>
             <button 
                 className={btnClass(props.showPersons)}
