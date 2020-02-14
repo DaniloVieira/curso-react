@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
-//import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -49,48 +49,21 @@ class App extends Component {
   }
 
   render() {
-    let persons = null;
-    let btnClass = '';
-
+    let persons = null;    
     if(this.state.showPersons){
       persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-                      key={person.id}
-                      change={(event) => this.nameChangeHandler(event, person.id)}
-                      click={() => this.deletePersonHandler(index)}
-                      name={person.name}
-                      age={person.age}/>
-          })}
-        </div>
+         <Persons persons={this.state.persons} changed={this.nameChangeHandler} clicked={this.deletePersonHandler}/>          
       )
-      //btnClass.push(classes.Red);
-      btnClass = classes.Red
-    }
-
-    const assignedClasses = [];
-    if(this.state.persons.length <= 2){
-      assignedClasses.push(classes.red);
-    }
-    if(this.state.persons.length <= 1){
-      assignedClasses.push(classes.bold);
-    }
+    }   
 
     return (
-      
-        <div className={classes.App}>
-          <h1>This is a react app</h1>
-          <p className={assignedClasses.join(' ')}>This is really working!</p>
-          <button 
-            className={btnClass}
-            // Most used way to pass a mathod receiving a parameter
-            onClick={this.togglePersonHandler}>
-            Toggle
-          </button>
-          {persons}
-        </div>
-      
+      <div className={classes.App}>
+        <Cockpit 
+          persons={this.state.persons} 
+          showPersons={this.state.showPersons}
+          clicked={this.togglePersonHandler} />
+        {persons}
+      </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null,  'This works now!!!'));
   }
