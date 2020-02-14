@@ -2,25 +2,26 @@ import React from 'react';
 
 import classes from './Cockpit.css';
 
-//const teste = (arg) => console.log('teste', arg);
+const assignedClasses = (length) => {
+    const arr = [];
+    if(length <= 2){
+        arr.push(classes.red);
+    }
+    if(length <= 1){
+        arr.push(classes.bold);
+    }
+    return arr.join(' ');
+} 
+
+const btnClass = showPersons => showPersons ? classes.Red : '';  
 
 const cockpit = (props) => {    
-    let btnClass = props.showPersons ? classes.Red : '';
-    
-    const assignedClasses = [];
-    if(props.persons.length <= 2){
-      assignedClasses.push(classes.red);
-    }
-    if(props.persons.length <= 1){
-      assignedClasses.push(classes.bold);
-    }
     return (
         <div className={classes.Cockpit}>
-            {/* {teste('argTeste!!!!')} */}
             <h1>This is a react app</h1>
-            <p className={assignedClasses.join(' ')}>This is really working!</p>
+            <p className={assignedClasses(props.persons.length)}>This is really working!</p>
             <button 
-                className={btnClass}
+                className={btnClass(props.showPersons)}
                 onClick={props.clicked}>
                     Toggle
             </button>
