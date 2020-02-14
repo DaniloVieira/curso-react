@@ -22,10 +22,20 @@ const cockpit = (props) => {
         setTimeout(() => {
             alert('save data to cloud!!!');
         }, 1000);
-
+        return () => {
+            console.log('[Cockpit.js] clenaup work in useEffect');
+        }
     }, [props.persons]);
     // this second paramter makes this useEffect execute only when persons changes
     // when using an empty array "[]" it executes once before de compoent renders
+
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[Cockpit.js] clenaup work in 2nd useEffect');
+        }
+
+    })
 
     return (
         <div className={classes.Cockpit}>
