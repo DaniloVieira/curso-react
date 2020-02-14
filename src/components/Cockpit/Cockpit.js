@@ -40,7 +40,7 @@ const cockpit = (props) => {
     return (
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
-            <p className={assignedClasses(props.persons.length)}>This is really working!</p>
+            <p className={assignedClasses(props.personsLength)}>This is really working!</p>
             <button 
                 className={btnClass(props.showPersons)}
                 onClick={props.clicked}>
@@ -50,4 +50,4 @@ const cockpit = (props) => {
     );
 };
 
-export default cockpit;
+export default React.memo(cockpit);
