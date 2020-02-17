@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import classes from './Cockpit.css';
 
@@ -16,10 +16,31 @@ const assignedClasses = (length) => {
 const btnClass = showPersons => showPersons ? classes.Red : '';  
 
 const cockpit = (props) => {    
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        // Http request...
+        setTimeout(() => {
+            alert('save data to cloud!!!');
+        }, 1000);
+        return () => {
+            console.log('[Cockpit.js] clenaup work in useEffect');
+        }
+    }, [props.persons]);
+    // this second paramter makes this useEffect execute only when persons changes
+    // when using an empty array "[]" it executes once before de compoent renders
+
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[Cockpit.js] clenaup work in 2nd useEffect');
+        }
+
+    })
+
     return (
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
-            <p className={assignedClasses(props.persons.length)}>This is really working!</p>
+            <p className={assignedClasses(props.personsLength)}>This is really working!</p>
             <button 
                 className={btnClass(props.showPersons)}
                 onClick={props.clicked}>
@@ -29,4 +50,4 @@ const cockpit = (props) => {
     );
 };
 
-export default cockpit;
+export default React.memo(cockpit);
