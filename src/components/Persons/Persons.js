@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import Person from './Person/Person'
 
-class Persons extends Component {
+class Persons extends PureComponent {
     // static getDerivedStateFromProps(props, state){
     //     console.log('[Persons.js] getDerivedStateFromProps', props);
     //     return state;
@@ -13,15 +13,15 @@ class Persons extends Component {
     //     console.log('[Persons.js] componentWillReceiveProps', props);
     // }
     
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('[Persons.js] shouldComponentUpdate');
-        // if(nextProps.persons !== this.state.persons){
-        //     return true;
-        // }else{
-        //     return false;
-        // }
-        return true;
-    }
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('[Persons.js] shouldComponentUpdate');
+    //     // if(nextProps.persons !== this.state.persons){
+    //     //     return true;
+    //     // }else{
+    //     //     return false;
+    //     // }
+    //     return true;
+    // }
     
     // Ex: save de the croll position to use it after an update on the components
     getSnapshotBeforeUpdate(prevProp, prevState){
